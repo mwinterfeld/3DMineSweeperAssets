@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 76d0866dc4e61764d8a9f3567049f4b3
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - myCube: {instanceID: 0}
+  - zero: {instanceID: 0}
+  - one: {instanceID: 0}
+  - two: {fileID: 100000, guid: 6aea55d9da9981c4b9c45b22100b0571, type: 3}
+  - three: {instanceID: 0}
+  - four: {instanceID: 0}
+  - five: {instanceID: 0}
+  - six: {instanceID: 0}
+  - seven: {instanceID: 0}
+  - eight: {instanceID: 0}
+  - nine: {instanceID: 0}
+  - number_material: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
