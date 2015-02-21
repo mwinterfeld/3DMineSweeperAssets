@@ -32,11 +32,11 @@ function Update () {
   		var dx:float = Input.mousePosition.x - prevX;
   		var dy:float = Input.mousePosition.y - prevY;
 
-		if(Mathf.Abs(dx) > 1.5)
+		if(Mathf.Abs(dx) > 3)
 		{
 		  transform.RotateAround(new Vector3(0,0,0), Vector3.down, dx*0.25);
 		}
-		if(Mathf.Abs(dy) > 1.5)
+		if(Mathf.Abs(dy) > 3)
 		{
 		  transform.RotateAround(new Vector3(0,0,0), Vector3.left, dy*0.25);
 		}

@@ -2,7 +2,6 @@ var myCube: GameObject;
 var cubeArray;
 var numberArray;
 
-var zero: GameObject;
 var one: GameObject;
 var two: GameObject;
 var three: GameObject;
@@ -12,8 +11,6 @@ var six: GameObject;
 var seven: GameObject;
 var eight: GameObject;
 var nine: GameObject;
-
-var number_material: Material;
 
 // Use this for initialization
 function Start () {
@@ -87,16 +84,16 @@ function Start () {
     }
   }
   
-  numberArray[3][3][3] = AddNumber(GameObject.Find("Main Camera").GetComponent(GameController).numbers[3][3][3],
-  								   new Vector3(cubeArray[3][3][3].transform.position.x,
-  												cubeArray[3][3][3].transform.position.y,
-  												cubeArray[3][3][3].transform.position.z));
+  numberArray[4][4][4] = AddNumber(GameObject.Find("Main Camera").GetComponent(GameController).numbers[4][4][4],
+  								   new Vector3(cubeArray[4][4][4].transform.position.x,
+  												cubeArray[4][4][4].transform.position.y,
+  												cubeArray[4][4][4].transform.position.z));
 }
 
 // Keeps the numbers and flags in place
 function Update()
 {
-
+  numberArray[4][4][4].transform.position = cubeArray[4][4][4].transform.position;
 }
 
 function AddNumber(n, location)
@@ -108,49 +105,67 @@ function AddNumber(n, location)
 	  
 	  case 1:
 	  	g = GameObject.Instantiate(one, location, Quaternion.identity);
-	  	g.AddComponent("MeshRenderer");
-	  	g.renderer.material = number_material;
-	  	g.transform.localScale *= 400;
-	  	g.transform.RotateAround(new Vector3(0,0,0),Vector3.right,90);
-	  	g.transform.RotateAround(new Vector3(0,0,0),Vector3.back,90);
+	  	g.transform.localScale *= 15;
+	  	g.transform.RotateAround(location,Vector3.down,90);
+	  	g.transform.RotateAround(location,Vector3.back,90);
 	  	g.renderer.material.SetColor("_Color",new Color(1,0,1,1));
 	  	return g;
 	    break;
 	  case 2:
 	    g = GameObject.Instantiate(two, location, Quaternion.identity);
+	  	g.transform.RotateAround(location,Vector3.down,90);
+	  	g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.localScale = new Vector3(1,1,1);
-	    g.transform.rotation.y = -1*Mathf.PI/4;
 	    g.transform.localScale *= 20;
 	    return g;
 	    break;
 	  case 3:
 	    g = GameObject.Instantiate(three, location, Quaternion.identity);
-	    g.transform.localScale *= 20;
-	    g.transform.rotation.y = 90;
+	    g.transform.RotateAround(location,Vector3.up,90);
+	    g.transform.RotateAround(location,Vector3.right,90);
+	    g.transform.localScale *= 40;
 	    return g;
 	    break;
 	  case 4:
 	    g = GameObject.Instantiate(four, location, Quaternion.identity);
+	    g.transform.localScale *= 30;
+	    g.transform.RotateAround(location,Vector3.left,90);
+	    g.transform.RotateAround(location,Vector3.back,90);
+	    g.transform.RotateAround(location,Vector3.up,180);
 	    return g;
 	    break;
 	  case 5:
 	    g = GameObject.Instantiate(five, location, Quaternion.identity);
+	    g.transform.localScale *= 15;
+	  	g.transform.RotateAround(location,Vector3.left,90);
+	    g.transform.RotateAround(location,Vector3.up,-90);
 	    return g;
 	    break;
 	  case 6:
 	    g = GameObject.Instantiate(six, location, Quaternion.identity);
+	    g.transform.localScale *= 15;
+	    g.transform.RotateAround(location, Vector3.fwd,90);
+	    g.transform.RotateAround(location, Vector3.up,180);
 	    return g;
 	    break;
 	  case 7:
 	    g = GameObject.Instantiate(seven, location, Quaternion.identity);
+	    g.transform.localScale *= 15;
+	    g.transform.RotateAround(location, Vector3.back,40);
+	    g.transform.RotateAround(location, Vector3.up,-90);
 	    return g;
 	    break;
 	  case 8:
 	    g = GameObject.Instantiate(eight, location, Quaternion.identity);
+	    g.transform.RotateAround(location, Vector3.fwd,85);
+	    g.transform.localScale *= 15;
 	    return g;
 	    break;
 	  case 9:
 	    g = GameObject.Instantiate(nine, location, Quaternion.identity);
+	    g.transform.localScale *= 15;
+	    g.transform.RotateAround(location, Vector3.up,-90);
+	    g.transform.RotateAround(location, Vector3.fwd,90);
 	    return g;
 	    break;
 	  default: return;
