@@ -50,7 +50,7 @@ function Update()
 
 function AddNumber(n, location)
 {
-	var transp = 0;
+	var transp = 1;
 	var g:GameObject;
 	if(n < 10)
 	{
@@ -66,17 +66,14 @@ function AddNumber(n, location)
 	    break;
 	  case 2:
 	    g = GameObject.Instantiate(two, location, Quaternion.identity);
-	    g.AddComponent("MeshRenderer");
-	  	g.transform.RotateAround(location,Vector3.down,90);
-	  	g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.localScale = new Vector3(1,1,1);
 	    g.transform.localScale *= 20;
-	    
+	    g.renderer.material.SetColor("_Color",new Color(0,255,0,transp));
+        g.transform.RotateAround(location,Vector3.forward,90);  
 	    return g;
 	    break;
 	  case 3:
 	    g = GameObject.Instantiate(three, location, Quaternion.identity);
-	    g.AddComponent("MeshRenderer");
 	    g.transform.localScale *= 12;
 	    g.transform.RotateAround(location,Vector3.down,90);
 	    g.transform.RotateAround(location,Vector3.back,90);
@@ -85,12 +82,9 @@ function AddNumber(n, location)
 	    break;
 	  case 4:
 	    g = GameObject.Instantiate(four, location, Quaternion.identity);
-	    g.AddComponent("MeshRenderer");
 	    g.transform.localScale *= 30;
-	    g.transform.RotateAround(location,Vector3.left,90);
-	    g.transform.RotateAround(location,Vector3.back,90);
-	    g.transform.RotateAround(location,Vector3.up,180);
-	    
+        g.transform.RotateAround(location,Vector3.forward,90);
+	    g.renderer.material.SetColor("_Color",new Color(211,30,255,transp));
 	    return g;
 	    break;
 	  case 5:

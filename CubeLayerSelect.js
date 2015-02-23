@@ -28,7 +28,7 @@ function Update () {
       gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
                                                         gameObject.renderer.material.color.b,
-                                                        0.1));
+                                                        0.05));
     }
   }
 }
