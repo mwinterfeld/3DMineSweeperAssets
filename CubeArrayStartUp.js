@@ -50,7 +50,7 @@ function Update()
 
 function AddNumber(n, location)
 {
-	var transp = 1;
+	var transp = 0;
 	var g:GameObject;
 	if(n < 10)
 	{

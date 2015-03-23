@@ -59,9 +59,11 @@ function reveal(collider) {
   	{
   		collider.gameObject.renderer.material.SetColor("_Color", Color(collider.gameObject.renderer.material.color.r,
                                                         collider.gameObject.renderer.material.color.g,
-                                                        collider.gameObject.renderer.material.color.b,0.4));
+                                                        collider.gameObject.renderer.material.color.b,0.2));
   		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
-		// show number
+  		if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
+		  GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").numberArray[iIndex][jIndex][kIndex].renderer.material.color.a = 1;
+  	  }
   	}
   }
 }

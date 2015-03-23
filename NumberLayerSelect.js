@@ -7,7 +7,7 @@ function Update () {
   	    gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
                                                         gameObject.renderer.material.color.b,
-                                                        0.8));  
+                                                        1));  
     }
     else if(gameObject.renderer.material.color.a > 0)
     {
