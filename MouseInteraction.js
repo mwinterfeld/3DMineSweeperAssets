@@ -6,6 +6,9 @@ var power: float;
 function Update () {
   var hit: RaycastHit;
   var currentLayer;
+  if(GameObject.Find("Main Camera").GetComponent(GameController).gameState != "lose")
+  {
+  
   if(Input.GetMouseButtonDown(0))
   {
     mousex = Input.mousePosition.x;
@@ -29,6 +32,7 @@ function Update () {
     {
     
     }
+  }
   }
 }
 
@@ -71,6 +75,7 @@ function reveal(collider) {
   			}
   		}
   		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
+  		GameObject.Find("Main Camera").GetComponent(GameController).gameState = "lose";
   	}
   	else
   	{
