@@ -1,5 +1,7 @@
 var mousex;
 var mousey;
+var radius: float;
+var power: float;
 
 function Update () {
   var hit: RaycastHit;
@@ -53,7 +55,22 @@ function reveal(collider) {
   
   	if(mine)
   	{
-  		// you lose, loser
+  		var i: int;
+  		var j: int;
+  		var k: int; 
+  		
+  		 for(i=0; i<7; i++)
+  		{
+    		for(j=0; j<7; j++)
+    		{
+      			for(k=0; k<7; k++)
+      			{
+  					GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[i][j][k].AddComponent("Rigidbody");
+  					
+  				}
+  			}
+  		}
+  		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
   	}
   	else
   	{
