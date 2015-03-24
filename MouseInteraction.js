@@ -79,13 +79,15 @@ function reveal(collider) {
   				}
   			}
   		}
-  		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
   		GameObject.Find("Main Camera").GetComponent(GameController).gameState = "lose";
+  		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
+		//revealAll(); 
   	}
   	else
+  	
   	{
   		smartReveal(iIndex, jIndex, kIndex);
-  		fixTransparancy();
+  		fixTransparency();
   	}
   }
 }
@@ -136,4 +138,63 @@ function smartReveal(iIndex,jIndex,kIndex) {
         }
 	}
 	return;
+}
+
+function fixTransparency()
+{
+	go = GameObject.Find("CubeArray");
+	cam = GameObject.Find("Main Camera");
+	cl = cam.GetComponent(ToggleTransparency).currentLayer;
+	for(var i=0; i < go.GetComponent(CubeArrayStartUp).cubeArray.length; i++)
+	{
+		for(var j=0; j < go.GetComponent(CubeArrayStartUp).cubeArray[i].length; j++)
+		{
+			for(var k=0; k < go.GetComponent(CubeArrayStartUp).cubeArray[i][j].length; k++)
+			{
+				if(cl != go.GetComponent(CubeArrayStartUp).cubeArray[i][j][k].layer && cam.GetComponent("GameController").cubeStates[i][j][k] == 1)
+				{
+					var gop: GameObject = go.GetComponent(CubeArrayStartUp).cubeArray[i][j][k];
+					gop.renderer.material.SetColor("_Color", Color(gop.renderer.material.color.r,
+                                                        gop.renderer.material.color.g,
+                                                        gop.renderer.material.color.b,
+                                                        0.05));  
+    				var num = go.GetComponent(CubeArrayStartUp).numberArray[i][j][k];
+    				if(num != null)
+    				{
+    					num.renderer.material.SetColor("_Color", Color(num.renderer.material.color.r,
+                                                        num.renderer.material.color.g,
+                                                        num.renderer.material.color.b,
+                                                        0.05));
+                    }
+				}
+			}
+		}
+	}
+}
+
+function revealAll()
+{
+	go = GameObject.Find("CubeArray");
+	for(var i=0; i < go.GetComponent(CubeArrayStartUp).cubeArray.length; i++)
+	{
+		for(var j=0; j < go.GetComponent(CubeArrayStartUp).cubeArray[i].length; j++)
+		{
+			for(var k=0; k < go.GetComponent(CubeArrayStartUp).cubeArray[i][j].length; k++)
+			{
+				var gop: GameObject = go.GetComponent(CubeArrayStartUp).cubeArray[i][j][k];
+				gop.renderer.material.SetColor("_Color", Color(gop.renderer.material.color.r,
+                                                gop.renderer.material.color.g,
+                                                gop.renderer.material.color.b,
+                                                0.05));  
+				var num = go.GetComponent(CubeArrayStartUp).numberArray[i][j][k];
+				if(num != null)
+				{
+					num.renderer.material.SetColor("_Color", Color(num.renderer.material.color.r,
+                                                num.renderer.material.color.g,
+                                                num.renderer.material.color.b,
+                                                1));
+				}
+			}
+		}
+	}
 }

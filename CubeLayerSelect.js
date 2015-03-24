@@ -23,7 +23,7 @@ function Update () {
                                                         gameObject.renderer.material.color.b,
                                                         0.8 - 0.6*go.GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex]));  
     }
-    else 
+    else if(go.GetComponent(ToggleTransparency).currentLayer < gameObject.layer)
     {
       gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
