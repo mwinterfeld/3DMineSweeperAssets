@@ -13,7 +13,7 @@ function Start () {
   var j;
   var k;
   var g;
-  numMines = 50;
+  numMines = 25;
   
   mines = new Array(7);
   numbers = new Array(7);

@@ -3,6 +3,11 @@ var mousey;
 var radius: float;
 var power: float;
 
+
+function checkBounds(z) {
+  return z >= 0 && z < 7;
+}
+
 function Update () {
   var hit: RaycastHit;
   var currentLayer;
@@ -79,13 +84,56 @@ function reveal(collider) {
   	}
   	else
   	{
-  		collider.gameObject.renderer.material.SetColor("_Color", Color(collider.gameObject.renderer.material.color.r,
-                                                        collider.gameObject.renderer.material.color.g,
-                                                        collider.gameObject.renderer.material.color.b,0.2));
-  		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
-  		if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
-		  GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").numberArray[iIndex][jIndex][kIndex].renderer.material.color.a = 1;
-  	  }
+  		smartReveal(iIndex, jIndex, kIndex);
+  		fixTransparancy();
   	}
   }
+}
+
+function smartReveal(iIndex,jIndex,kIndex) {
+	var cube: GameObject;
+	var number: GameObject;
+	if(GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] == 1)
+	{
+		return;
+	}
+	if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
+		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1; 
+		cube = GameObject.Find("CubeArray").GetComponent(CubeArrayStartUp).cubeArray[iIndex][jIndex][kIndex];
+		number = GameObject.Find("CubeArray").GetComponent(CubeArrayStartUp).numberArray[iIndex][jIndex][kIndex];
+		cube.renderer.material.SetColor("_Color", Color(cube.renderer.material.color.r,
+                                                        cube.renderer.material.color.g,
+                                                        cube.renderer.material.color.b,0.2));
+        number.renderer.material.color.a = 1;
+        return;
+	}
+	else
+	{
+		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1; 
+		cube = GameObject.Find("CubeArray").GetComponent(CubeArrayStartUp).cubeArray[iIndex][jIndex][kIndex];
+		cube.renderer.material.SetColor("_Color", Color(cube.renderer.material.color.r,
+                                                        cube.renderer.material.color.g,
+                                                        cube.renderer.material.color.b,0.2));
+        
+        for(var ii = 0; ii < 3; ii++)
+        {
+        	for(var jj = 0; jj < 3; jj++)
+        	{
+        		for(var kk = 0; kk < 3; kk++)
+        		{
+        			if(ii != 1 || jj != 1 || kk != 1)
+        			{	
+        				iii = iIndex + ii - 1;
+        				jjj = jIndex + jj - 1;
+        				kkk = kIndex + kk - 1;
+        				if(checkBounds(iii) && checkBounds(jjj) && checkBounds(kkk))
+        				{
+        					smartReveal(iii,jjj,kkk);	
+        				}
+        			}
+        		}
+        	}
+        }
+	}
+	return;
 }
