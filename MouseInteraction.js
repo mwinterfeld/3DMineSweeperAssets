@@ -3,9 +3,17 @@ var mousey;
 var radius: float;
 var power: float;
 
+
+function checkBounds(z) {
+  return z >= 0 && z < 7;
+}
+
 function Update () {
   var hit: RaycastHit;
   var currentLayer;
+  if(GameObject.Find("Main Camera").GetComponent(GameController).gameState != "lose")
+  {
+  
   if(Input.GetMouseButtonDown(0))
   {
     mousex = Input.mousePosition.x;
@@ -29,6 +37,7 @@ function Update () {
     {
     
     }
+  }
   }
 }
 
@@ -70,17 +79,122 @@ function reveal(collider) {
   				}
   			}
   		}
+  		GameObject.Find("Main Camera").GetComponent(GameController).gameState = "lose";
   		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
+		//revealAll(); 
   	}
   	else
+  	
   	{
-  		collider.gameObject.renderer.material.SetColor("_Color", Color(collider.gameObject.renderer.material.color.r,
-                                                        collider.gameObject.renderer.material.color.g,
-                                                        collider.gameObject.renderer.material.color.b,0.2));
-  		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
-  		if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
-		  GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").numberArray[iIndex][jIndex][kIndex].renderer.material.color.a = 1;
-  	  }
+  		smartReveal(iIndex, jIndex, kIndex);
+  		fixTransparency();
   	}
   }
+}
+
+function smartReveal(iIndex,jIndex,kIndex) {
+	var cube: GameObject;
+	var number: GameObject;
+	if(GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] == 1)
+	{
+		return;
+	}
+	if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
+		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1; 
+		cube = GameObject.Find("CubeArray").GetComponent(CubeArrayStartUp).cubeArray[iIndex][jIndex][kIndex];
+		number = GameObject.Find("CubeArray").GetComponent(CubeArrayStartUp).numberArray[iIndex][jIndex][kIndex];
+		cube.renderer.material.SetColor("_Color", Color(cube.renderer.material.color.r,
+                                                        cube.renderer.material.color.g,
+                                                        cube.renderer.material.color.b,0.2));
+        number.renderer.material.color.a = 1;
+        return;
+	}
+	else
+	{
+		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1; 
+		cube = GameObject.Find("CubeArray").GetComponent(CubeArrayStartUp).cubeArray[iIndex][jIndex][kIndex];
+		cube.renderer.material.SetColor("_Color", Color(cube.renderer.material.color.r,
+                                                        cube.renderer.material.color.g,
+                                                        cube.renderer.material.color.b,0.2));
+        
+        for(var ii = 0; ii < 3; ii++)
+        {
+        	for(var jj = 0; jj < 3; jj++)
+        	{
+        		for(var kk = 0; kk < 3; kk++)
+        		{
+        			if(ii != 1 || jj != 1 || kk != 1)
+        			{	
+        				iii = iIndex + ii - 1;
+        				jjj = jIndex + jj - 1;
+        				kkk = kIndex + kk - 1;
+        				if(checkBounds(iii) && checkBounds(jjj) && checkBounds(kkk))
+        				{
+        					smartReveal(iii,jjj,kkk);	
+        				}
+        			}
+        		}
+        	}
+        }
+	}
+	return;
+}
+
+function fixTransparency()
+{
+	go = GameObject.Find("CubeArray");
+	cam = GameObject.Find("Main Camera");
+	cl = cam.GetComponent(ToggleTransparency).currentLayer;
+	for(var i=0; i < go.GetComponent(CubeArrayStartUp).cubeArray.length; i++)
+	{
+		for(var j=0; j < go.GetComponent(CubeArrayStartUp).cubeArray[i].length; j++)
+		{
+			for(var k=0; k < go.GetComponent(CubeArrayStartUp).cubeArray[i][j].length; k++)
+			{
+				if(cl != go.GetComponent(CubeArrayStartUp).cubeArray[i][j][k].layer && cam.GetComponent("GameController").cubeStates[i][j][k] == 1)
+				{
+					var gop: GameObject = go.GetComponent(CubeArrayStartUp).cubeArray[i][j][k];
+					gop.renderer.material.SetColor("_Color", Color(gop.renderer.material.color.r,
+                                                        gop.renderer.material.color.g,
+                                                        gop.renderer.material.color.b,
+                                                        0.05));  
+    				var num = go.GetComponent(CubeArrayStartUp).numberArray[i][j][k];
+    				if(num != null)
+    				{
+    					num.renderer.material.SetColor("_Color", Color(num.renderer.material.color.r,
+                                                        num.renderer.material.color.g,
+                                                        num.renderer.material.color.b,
+                                                        0.05));
+                    }
+				}
+			}
+		}
+	}
+}
+
+function revealAll()
+{
+	go = GameObject.Find("CubeArray");
+	for(var i=0; i < go.GetComponent(CubeArrayStartUp).cubeArray.length; i++)
+	{
+		for(var j=0; j < go.GetComponent(CubeArrayStartUp).cubeArray[i].length; j++)
+		{
+			for(var k=0; k < go.GetComponent(CubeArrayStartUp).cubeArray[i][j].length; k++)
+			{
+				var gop: GameObject = go.GetComponent(CubeArrayStartUp).cubeArray[i][j][k];
+				gop.renderer.material.SetColor("_Color", Color(gop.renderer.material.color.r,
+                                                gop.renderer.material.color.g,
+                                                gop.renderer.material.color.b,
+                                                0.05));  
+				var num = go.GetComponent(CubeArrayStartUp).numberArray[i][j][k];
+				if(num != null)
+				{
+					num.renderer.material.SetColor("_Color", Color(num.renderer.material.color.r,
+                                                num.renderer.material.color.g,
+                                                num.renderer.material.color.b,
+                                                1));
+				}
+			}
+		}
+	}
 }
