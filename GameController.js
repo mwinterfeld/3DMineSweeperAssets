@@ -3,15 +3,16 @@ var numbers;
 var cubeStates;
 var numMines:int;
 var a:int;
+var gameState;
 
 // Use this for initialization
 function Start () {
   
+  gameState = "play";
   var i;
   var j;
   var k;
   var g;
-  numMines = 50;
   
   mines = new Array(7);
   numbers = new Array(7);
