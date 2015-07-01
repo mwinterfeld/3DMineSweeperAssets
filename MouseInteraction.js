@@ -1,5 +1,10 @@
 var mousex;
 var mousey;
+<<<<<<< HEAD
+=======
+var radius: float;
+var power: float;
+>>>>>>> parent of d3258ad... Trying to revert
 
 function Update () {
   var hit: RaycastHit;
@@ -53,15 +58,42 @@ function reveal(collider) {
   
   	if(mine)
   	{
+<<<<<<< HEAD
   		// you lose, loser
+=======
+  		var i: int;
+  		var j: int;
+  		var k: int; 
+  		
+  		 for(i=0; i<7; i++)
+  		{
+    		for(j=0; j<7; j++)
+    		{
+      			for(k=0; k<7; k++)
+      			{
+  					GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[i][j][k].AddComponent("Rigidbody");
+  					
+  				}
+  			}
+  		}
+  		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
+>>>>>>> parent of d3258ad... Trying to revert
   	}
   	else
   	{
   		collider.gameObject.renderer.material.SetColor("_Color", Color(collider.gameObject.renderer.material.color.r,
                                                         collider.gameObject.renderer.material.color.g,
+<<<<<<< HEAD
                                                         collider.gameObject.renderer.material.color.b,0.4));
   		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
 		// show number
+=======
+                                                        collider.gameObject.renderer.material.color.b,0.2));
+  		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
+  		if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
+		  GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").numberArray[iIndex][jIndex][kIndex].renderer.material.color.a = 1;
+  	  }
+>>>>>>> parent of d3258ad... Trying to revert
   	}
   }
 }

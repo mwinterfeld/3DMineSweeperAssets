@@ -21,7 +21,11 @@ function Update () {
     gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
                                                         gameObject.renderer.material.color.b,
+<<<<<<< HEAD
                                                         0.8 - 0.4*go.GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex]));  
+=======
+                                                        0.8 - 0.6*go.GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex]));  
+>>>>>>> parent of d3258ad... Trying to revert
     }
     else 
     {

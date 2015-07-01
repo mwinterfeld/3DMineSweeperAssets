@@ -70,23 +70,41 @@ function AddNumber(n, location)
 	  	g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.localScale = new Vector3(1,1,1);
 	    g.transform.localScale *= 20;
+<<<<<<< HEAD
+=======
+	    g.renderer.material.SetColor("_Color",new Color(0,255,0,transp));
+        g.transform.RotateAround(location,Vector3.forward,90);  
+>>>>>>> parent of d3258ad... Trying to revert
 	    return g;
 	    break;
 	  case 3:
 	    g = GameObject.Instantiate(three, location, Quaternion.identity);
+<<<<<<< HEAD
 	    g.AddComponent("MeshRenderer");
 	    g.transform.RotateAround(location,Vector3.up,-90);
 	    g.transform.RotateAround(location,Vector3.right,90);
 	    g.transform.localScale *= 25;
+=======
+	    g.transform.localScale *= 12;
+	    g.transform.RotateAround(location,Vector3.down,90);
+	    g.transform.RotateAround(location,Vector3.back,90);
+	    g.renderer.material.SetColor("_Color",new Color(255,255,0,transp));
+>>>>>>> parent of d3258ad... Trying to revert
 	    return g;
 	    break;
 	  case 4:
 	    g = GameObject.Instantiate(four, location, Quaternion.identity);
+<<<<<<< HEAD
 	    g.AddComponent("MeshRenderer");
 	    g.transform.localScale *= 30;
 	    g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.RotateAround(location,Vector3.back,90);
 	    g.transform.RotateAround(location,Vector3.up,180);
+=======
+	    g.transform.localScale *= 30;
+        g.transform.RotateAround(location,Vector3.forward,90);
+	    g.renderer.material.SetColor("_Color",new Color(211,30,255,transp));
+>>>>>>> parent of d3258ad... Trying to revert
 	    return g;
 	    break;
 	  case 5:
@@ -114,6 +132,10 @@ function AddNumber(n, location)
 	    g = GameObject.Instantiate(eight, location, Quaternion.identity);
 	    g.transform.RotateAround(location, Vector3.forward,85);
 	    g.transform.localScale *= 15;
+<<<<<<< HEAD
+=======
+	    g.renderer.material.SetColor("_Color",new Color(255,1,255,transp));
+>>>>>>> parent of d3258ad... Trying to revert
 	    return g;
 	    break;
 	  case 9:
