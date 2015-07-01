@@ -4,7 +4,10 @@ var mousey;
 =======
 var radius: float;
 var power: float;
+<<<<<<< HEAD
 >>>>>>> parent of d3258ad... Trying to revert
+=======
+>>>>>>> parent of 1a12263... come on
 
 function Update () {
   var hit: RaycastHit;
@@ -77,23 +80,32 @@ function reveal(collider) {
   			}
   		}
   		GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").cubeArray[3][3][3].rigidbody.AddExplosionForce(power, new Vector3(0,0,0), radius, 3.0);
+<<<<<<< HEAD
 >>>>>>> parent of d3258ad... Trying to revert
+=======
+>>>>>>> parent of 1a12263... come on
   	}
   	else
   	{
   		collider.gameObject.renderer.material.SetColor("_Color", Color(collider.gameObject.renderer.material.color.r,
                                                         collider.gameObject.renderer.material.color.g,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                         collider.gameObject.renderer.material.color.b,0.4));
   		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
 		// show number
 =======
+=======
+>>>>>>> parent of 1a12263... come on
                                                         collider.gameObject.renderer.material.color.b,0.2));
   		GameObject.Find("Main Camera").GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex] = 1;
   		if(GameObject.Find("Main Camera").GetComponent(GameController).numbers[iIndex][jIndex][kIndex] > 0) {
 		  GameObject.Find("CubeArray").GetComponent("CubeArrayStartUp").numberArray[iIndex][jIndex][kIndex].renderer.material.color.a = 1;
   	  }
+<<<<<<< HEAD
 >>>>>>> parent of d3258ad... Trying to revert
+=======
+>>>>>>> parent of 1a12263... come on
   	}
   }
 }

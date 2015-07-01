@@ -9,10 +9,14 @@ function Update () {
                                                         0.8));  
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     else 
 =======
     else if(gameObject.renderer.material.color.a > 0)
 >>>>>>> parent of d3258ad... Trying to revert
+=======
+    else if(gameObject.renderer.material.color.a > 0)
+>>>>>>> parent of 1a12263... come on
     {
     gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
@@ -21,7 +25,10 @@ function Update () {
                                                         0.1));
 =======
                                                         0.05));
+<<<<<<< HEAD
 >>>>>>> parent of d3258ad... Trying to revert
+=======
+>>>>>>> parent of 1a12263... come on
   	}
   }
 }

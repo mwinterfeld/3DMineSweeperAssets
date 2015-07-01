@@ -71,7 +71,10 @@ function AddNumber(n, location)
 	    g.transform.localScale = new Vector3(1,1,1);
 	    g.transform.localScale *= 20;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 1a12263... come on
 	    g.renderer.material.SetColor("_Color",new Color(0,255,0,transp));
         g.transform.RotateAround(location,Vector3.forward,90);  
 >>>>>>> parent of d3258ad... Trying to revert
@@ -80,11 +83,14 @@ function AddNumber(n, location)
 	  case 3:
 	    g = GameObject.Instantiate(three, location, Quaternion.identity);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    g.AddComponent("MeshRenderer");
 	    g.transform.RotateAround(location,Vector3.up,-90);
 	    g.transform.RotateAround(location,Vector3.right,90);
 	    g.transform.localScale *= 25;
 =======
+=======
+>>>>>>> parent of 1a12263... come on
 	    g.transform.localScale *= 12;
 	    g.transform.RotateAround(location,Vector3.down,90);
 	    g.transform.RotateAround(location,Vector3.back,90);
@@ -95,12 +101,15 @@ function AddNumber(n, location)
 	  case 4:
 	    g = GameObject.Instantiate(four, location, Quaternion.identity);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	    g.AddComponent("MeshRenderer");
 	    g.transform.localScale *= 30;
 	    g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.RotateAround(location,Vector3.back,90);
 	    g.transform.RotateAround(location,Vector3.up,180);
 =======
+=======
+>>>>>>> parent of 1a12263... come on
 	    g.transform.localScale *= 30;
         g.transform.RotateAround(location,Vector3.forward,90);
 	    g.renderer.material.SetColor("_Color",new Color(211,30,255,transp));
@@ -133,7 +142,10 @@ function AddNumber(n, location)
 	    g.transform.RotateAround(location, Vector3.forward,85);
 	    g.transform.localScale *= 15;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 1a12263... come on
 	    g.renderer.material.SetColor("_Color",new Color(255,1,255,transp));
 >>>>>>> parent of d3258ad... Trying to revert
 	    return g;

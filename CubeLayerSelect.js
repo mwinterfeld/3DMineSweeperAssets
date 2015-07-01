@@ -22,10 +22,14 @@ function Update () {
                                                         gameObject.renderer.material.color.g,
                                                         gameObject.renderer.material.color.b,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                         0.8 - 0.4*go.GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex]));  
 =======
                                                         0.8 - 0.6*go.GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex]));  
 >>>>>>> parent of d3258ad... Trying to revert
+=======
+                                                        0.8 - 0.6*go.GetComponent(GameController).cubeStates[iIndex][jIndex][kIndex]));  
+>>>>>>> parent of 1a12263... come on
     }
     else 
     {
