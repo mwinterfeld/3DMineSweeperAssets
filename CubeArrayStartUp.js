@@ -50,6 +50,7 @@ function Update()
 
 function AddNumber(n, location)
 {
+	var transp = 0;
 	var g:GameObject;
 	if(n < 10)
 	{
@@ -57,70 +58,72 @@ function AddNumber(n, location)
 	  
 	  case 1:
 	  	g = GameObject.Instantiate(one, location, Quaternion.identity);
-	  	g.transform.localScale *= 15;
+	  	g.transform.localScale *= 7.5;
 	  	g.transform.RotateAround(location,Vector3.down,90);
 	  	g.transform.RotateAround(location,Vector3.back,90);
-	  	g.renderer.material.SetColor("_Color",new Color(1,0,1,1));
+	  	g.renderer.material.SetColor("_Color",new Color(255,0,0,transp));
 	  	return g;
 	    break;
 	  case 2:
 	    g = GameObject.Instantiate(two, location, Quaternion.identity);
-	    g.AddComponent("MeshRenderer");
-	  	g.transform.RotateAround(location,Vector3.down,90);
-	  	g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.localScale = new Vector3(1,1,1);
-	    g.transform.localScale *= 20;
+	    g.transform.localScale *= 10;
+	    g.renderer.material.SetColor("_Color",new Color(0,255,0,transp));
+        g.transform.RotateAround(location,Vector3.forward,90);  
 	    return g;
 	    break;
 	  case 3:
 	    g = GameObject.Instantiate(three, location, Quaternion.identity);
-	    g.AddComponent("MeshRenderer");
-	    g.transform.RotateAround(location,Vector3.up,-90);
-	    g.transform.RotateAround(location,Vector3.right,90);
-	    g.transform.localScale *= 25;
+	    g.transform.localScale *= 6;
+	    g.transform.RotateAround(location,Vector3.down,90);
+	    g.transform.RotateAround(location,Vector3.back,90);
+	    g.renderer.material.SetColor("_Color",new Color(255,255,0,transp));
 	    return g;
 	    break;
 	  case 4:
 	    g = GameObject.Instantiate(four, location, Quaternion.identity);
-	    g.AddComponent("MeshRenderer");
-	    g.transform.localScale *= 30;
-	    g.transform.RotateAround(location,Vector3.left,90);
-	    g.transform.RotateAround(location,Vector3.back,90);
-	    g.transform.RotateAround(location,Vector3.up,180);
+	    g.transform.localScale *= 15;
+        g.transform.RotateAround(location,Vector3.forward,90);
+	    g.renderer.material.SetColor("_Color",new Color(211,30,255,transp));
 	    return g;
 	    break;
 	  case 5:
 	    g = GameObject.Instantiate(five, location, Quaternion.identity);
-	    g.transform.localScale *= 15;
+	    g.transform.localScale *= 7.5;
 	  	g.transform.RotateAround(location,Vector3.left,90);
 	    g.transform.RotateAround(location,Vector3.up,-90);
+	    g.renderer.material.SetColor("_Color",new Color(0,0,255,transp));
 	    return g;
 	    break;
 	  case 6:
 	    g = GameObject.Instantiate(six, location, Quaternion.identity);
-	    g.transform.localScale *= 15;
+	    g.transform.localScale *= 7.5;
 	    g.transform.RotateAround(location, Vector3.forward,90);
 	    g.transform.RotateAround(location, Vector3.up,180);
+	    g.renderer.material.SetColor("_Color",new Color(2.5,0,5,transp));
 	    return g;
 	    break;
 	  case 7:
 	    g = GameObject.Instantiate(seven, location, Quaternion.identity);
-	    g.transform.localScale *= 15;
+	    g.transform.localScale *= 7.5;
 	    g.transform.RotateAround(location, Vector3.back,40);
 	    g.transform.RotateAround(location, Vector3.up,-90);
+	    g.renderer.material.SetColor("_Color",new Color(35,1,70,transp));
 	    return g;
 	    break;
 	  case 8:
 	    g = GameObject.Instantiate(eight, location, Quaternion.identity);
 	    g.transform.RotateAround(location, Vector3.forward,85);
-	    g.transform.localScale *= 15;
+	    g.transform.localScale *= 7.5;
+	    g.renderer.material.SetColor("_Color",new Color(255,1,255,transp));
 	    return g;
 	    break;
 	  case 9:
 	    g = GameObject.Instantiate(nine, location, Quaternion.identity);
-	    g.transform.localScale *= 15;
+	    g.transform.localScale *= 7.5;
 	    g.transform.RotateAround(location, Vector3.up,-90);
 	    g.transform.RotateAround(location, Vector3.forward,90);
+	    g.renderer.material.SetColor("_Color",new Color(150,150,150,transp));
 	    return g;
 	    break;
 	  default: return;
@@ -145,7 +148,7 @@ function initializeCubeArray() {
         {
           cubeArray[2+i][2+j][2+k] = GameObject.Instantiate(myCube);
           cubeArray[2+i][2+j][2+k].layer = 9;
-          cubeArray[2+i][2+j][2+k].transform.position = new Vector3(2*(i-1),2*(j-1),2*(k-1));
+          cubeArray[2+i][2+j][2+k].transform.position = new Vector3(i-1,j-1,k-1);
           cubeArray[2+i][2+j][2+k].name = "Cube" + (i+2).ToString() + (j+2).ToString() + (k+2).ToString();
         }
       }
@@ -162,7 +165,7 @@ function initializeCubeArray() {
         {
           cubeArray[1+i][1+j][1+k] = GameObject.Instantiate(myCube);
           cubeArray[1+i][1+j][1+k].layer = 10;
-          cubeArray[1+i][1+j][1+k].transform.position = new Vector3(2*(i-2),2*(j-2),2*(k-2));
+          cubeArray[1+i][1+j][1+k].transform.position = new Vector3(i-2,j-2,k-2);
           cubeArray[1+i][1+j][1+k].name = "Cube" + (i+1).ToString() + (j+1).ToString() + (k+1).ToString();
         }
       }
@@ -179,7 +182,7 @@ function initializeCubeArray() {
         {
           cubeArray[i][j][k] = GameObject.Instantiate(myCube);
           cubeArray[i][j][k].layer = 11;
-          cubeArray[i][j][k].transform.position = new Vector3(2*(i-3),2*(j-3),2*(k-3));
+          cubeArray[i][j][k].transform.position = new Vector3(i-3,j-3,k-3);
           cubeArray[i][j][k].name = "Cube" + i.ToString() + j.ToString() + k.ToString();
           cubeArray[i][j][k].renderer.material.color.a = 0.8;
         }
