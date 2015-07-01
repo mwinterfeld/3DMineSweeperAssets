@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 76d0866dc4e61764d8a9f3567049f4b3
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - myCube: {fileID: 107346, guid: b29798a3365677e4b8a57db8224d710e, type: 2}
+  - one: {fileID: 100000, guid: 981e16d9daf4d3d449f9ac315c40586b, type: 3}
+  - two: {fileID: 100000, guid: 6aea55d9da9981c4b9c45b22100b0571, type: 3}
+  - three: {fileID: 100000, guid: c1d41ae31c5db454a93deda93848cac4, type: 3}
+  - four: {fileID: 100000, guid: ccf0cd5eefda4474b921e91069aaa589, type: 3}
+  - five: {fileID: 100000, guid: 4995cb8fbfcb0a343acf34d318aecb60, type: 3}
+  - six: {fileID: 100000, guid: b4b33744220aca54ebbf737160c7c88c, type: 3}
+  - seven: {fileID: 100000, guid: f68b3d70fbe2a274c99b768f30e78ac9, type: 3}
+  - eight: {fileID: 100000, guid: af33d5288ac72e644ae093c7ffcfb4e0, type: 3}
+  - nine: {fileID: 100000, guid: 52fc266cfdab864478cbdca74ce3b953, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

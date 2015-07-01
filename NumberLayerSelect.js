@@ -1,27 +1,19 @@
 function Update () {
-  if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.UpArrow) && GameObject.Find("Main Camera").GetComponent(GameController).gameState != "lose")
+  if(Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.UpArrow))
   {
   	go = GameObject.Find("Main Camera");
-  	if(go.GetComponent(ToggleTransparency).currentLayer == gameObject.layer &&
-  	   gameObject.renderer.material.color.a > 0) {
+  	if(go.GetComponent(ToggleTransparency).currentLayer == gameObject.layer) {
   	    gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
                                                         gameObject.renderer.material.color.b,
-                                                        1));  
+                                                        0.8));  
     }
-    else if(go.GetComponent(ToggleTransparency).currentLayer < gameObject.layer && gameObject.renderer.material.color.a > 0)
+    else 
     {
     gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
                                                         gameObject.renderer.material.color.g,
                                                         gameObject.renderer.material.color.b,
-                                                        0.05));
-  	}
-  	else if(gameObject.renderer.material.color.a > 0)
-  	{
-	   gameObject.renderer.material.SetColor("_Color", Color(gameObject.renderer.material.color.r,
-	                                                gameObject.renderer.material.color.g,
-	                                                gameObject.renderer.material.color.b,
-	                                                0.1));
+                                                        0.1));
   	}
   }
 }
